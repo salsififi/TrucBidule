@@ -17,10 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from password_configurator.views import password_configurator
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', password_configurator, name='password-configurator'),
+    path('', include('password_configurator.urls')),
     path('docstring-fetch', include('docstring_fetch.urls')),
 ]

@@ -1,9 +1,7 @@
-<!DOCTYPE html>
 {% extends "truc_bidule/base.html" %}
+{% load static %}
+
 {% block title %}Test de l'API Fetch de JS{% endblock %}
-{% block main-style %}text-align:center;{% endblock %}
-{% block main-title %}
-{% endblock %}
 
 {% block content %}
     <main style="text-align: center">
@@ -20,7 +18,7 @@
                 <input type="text" name="nb2" id="input-nb2">
             </div>
             <br>
-            <input type="submit" id="btn-calculer" value="Calculer">
+            <input type="submit" id="btn-calculer" value="Calculer" data-url="{% url 'compute' %}">
         </form>
         <br>
         <p id="p-result"></p>
@@ -28,51 +26,6 @@
 {% endblock content %}
 
 {% block extra_js %}
-    <script>
-        let btnCalculer = document.getElementById("btn-calculer")
-        btnCalculer.addEventListener("click", async function (event) {
-            event.preventDefault()
-
-            let nb1 = document.getElementById("input-nb1").value
-            let nb2 = document.getElementById("input-nb2").value
-            let form = new FormData()
-            form.append("nb1", nb1)
-            form.append("nb2", nb2)
-            let csrfTokenValue = document.querySelector("[name=csrfmiddlewaretoken]").value
-            let request = new Request("{% url 'compute' %}", {
-                method: "POST",
-                body: form,
-                headers: {"X-CSRFToken": csrfTokenValue}
-            })
-
-            let response = await fetch(request)
-            let data = await response.json()
-            let pResult = document.getElementById("p-result")
-            pResult.innerText = `Total: ${data["operation_result"]}`
-        })
-
-        {#btnCalculer.addEventListener("click", (event) => {#}
-        {#   let nb1 = document.getElementById("input-nb1").value#}
-        {#   let nb2 = document.getElementById("input-nb2").value#}
-        {##}
-        {#   let form = new FormData()#}
-        {#   form.append("nb1", nb1)#}
-        {#   form.append("nb2", nb2)#}
-        {#   let crsfTokenValue = document.querySelector("[name=csrfmiddlewaretoken]") #}
-        {#    #}
-        {#   let request = new Request("{% url 'compute' %}", {#}
-        {#       method: "POST",#}
-        {#       body: form,#}
-        {#       headers: {"X-CSRFToken": crsfTokenValue}#}
-        {#   })#}
-        {##}
-        {#   fetch(request)#}
-        {#       .then(response => response.json())#}
-        {#       .then(data => {#}
-        {#           let pResult = document.getElementById("p-result")#}
-        {#           pResult.innerText = `Somme: ${data["operation_result"]}`#}
-        {#       })#}
-        {##}
-        {# }) #}
+    <script src="{% static 'docstring_fetch/main.js' %}">
     </script>
 {% endblock extra_js %}

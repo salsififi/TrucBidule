@@ -13,7 +13,7 @@ SPECIAL_CHARS = string.punctuation + "àéèùçâêîôû"
 LOWER = string.ascii_lowercase
 
 
-def configure_password(
+def generate_password(
         length: int = 16,
         nb_digits: int = 4,
         nb_uppers: int = 4,
@@ -54,4 +54,4 @@ def _check_arguments(length:int, nb_digits:int, nb_uppers:int, nb_special_chars:
 
 if __name__ == '__main__':
     print(SPECIAL_CHARS)
-    print(configure_password())
+    print(generate_password())
