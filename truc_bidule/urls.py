@@ -15,12 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
-from test_fetch.views import home, compute
+from password_configurator.views import password_configurator
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),
-    path('compute/', compute, name='compute'),
+    path('', password_configurator, name='password-configurator'),
+    path('docstring-fetch', include('docstring_fetch.urls')),
 ]
