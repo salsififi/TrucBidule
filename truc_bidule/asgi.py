@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'truc_bidule.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'truc_bidule.settings.production')
 
 application = get_asgi_application()

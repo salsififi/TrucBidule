@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('password_configurator.urls')),
     path('docstring-fetch', include('docstring_fetch.urls')),
+    path('__refresh__', include('django_browser_reload.urls')),
 ]

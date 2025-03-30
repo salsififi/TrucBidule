@@ -1,12 +1,20 @@
+{% load django_vite %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{% block title %}{% endblock %}</title>
+    {% vite_hmr_client %}
+    {% vite_asset "src/main.js" %}
 </head>
 
 <body>
 {% block content %}{% endblock %}
+POUET DE BASE
+<img src="{% static 'images/python.png' %}" alt="python">
 {% block extra_js %}{% endblock %}
 </body>
 </html>

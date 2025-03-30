@@ -1,0 +1,5 @@
+@import "tailwindcss" source("../../src/");
+@source "../../../**/templates/**/*.html";
+@source "../../../.venv/**/crispy_forms/**/*.{html,py,js,css}";
+@plugin "daisyui";
+@plugin "@tailwindcss/typography";
